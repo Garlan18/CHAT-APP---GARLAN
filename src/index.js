@@ -17,7 +17,7 @@ let count = 0
 io.on('connection', (socket) => {
     console.log('New Websocket connection')
 
-    socket.emit('countUpdated')
+    socket.emit('countUpdated', count)
 
 })
 
