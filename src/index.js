@@ -19,6 +19,10 @@ io.on('connection', (socket) => {
 
     socket.emit('countUpdated', count)
 
+    socket.on('increment', () => {
+        
+    })
+
 })
 
 server.listen(port, () => {
