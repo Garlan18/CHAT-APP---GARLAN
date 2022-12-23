@@ -2,6 +2,7 @@ const path = require('path')
 const http = require('http')
 const express = require('express')
 const socketio = require('socket.io')
+const { emit } = require('process')
 
 const app = express()
 const server = http.createServer(app)
@@ -23,11 +24,13 @@ io.on('connection', (socket) => {
 
     })
 
-    socket.on('disconnect', () => {
-        io.emit('message', 'A user has left')
+    socket.on('sendLocation', (coords) => {
+        io.emit('message', 'Location: ${coords.latitude}, ${coords.longitude}')
 
     })
-})
+
+    })
+
 
 server.listen(port, () => {
     console.log ('Server is up on port ${port}!')
